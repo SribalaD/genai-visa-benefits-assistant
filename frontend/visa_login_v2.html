@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visa AI Assistant - Login</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1f71 0%, #4f5bd5 50%, #667eea 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .login-container {
+      background: rgba(255,255,255,0.98);
+      padding: 45px 40px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .logo { width: 140px; margin-bottom: 20px; }
+    h1 { color: #1a1f71; margin-bottom: 10px; }
+    .subtitle { color: #64748b; margin-bottom: 25px; }
+    .input-group { margin-bottom: 18px; text-align: left; }
+    label { font-size: 14px; margin-bottom: 6px; display: block; }
+    input, select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+      font-size: 15px;
+    }
+    .btn-login {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #1a1f71, #4f5bd5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .error-msg {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="login-container">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" class="logo">
+  <h1>Visa AI Assistant</h1>
+  <p class="subtitle">Your intelligent financial companion</p>
+
+  <div class="error-msg" id="errorMsg">Please fill all fields correctly</div>
+
+  <div class="input-group">
+    <label>Language</label>
+    <select id="lang">
+      <option value="en">English</option>
+      <option value="ta">Tamil</option>
+    </select>
+  </div>
+
+  <div class="input-group">
+    <label>Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name">
+  </div>
+
+  <div class="input-group">
+    <label>Profession</label>
+    <input type="text" id="profession" placeholder="Student / Engineer">
+  </div>
+
+  <!-- ✅ NEW FIELD ADDED -->
+  <div class="input-group">
+    <label>Visa Card (first 4 digits)</label>
+    <input type="text" id="card4" placeholder="XXXX" maxlength="4">
+  </div>
+
+  <button class="btn-login" onclick="login()">Continue to Dashboard →</button>
+</div>
+
+<script>
+function login() {
+  const name = document.getElementById("name").value.trim();
+  const profession = document.getElementById("profession").value.trim();
+  const card4 = document.getElementById("card4").value.trim();
+  const error = document.getElementById("errorMsg");
+
+  if (!name || !profession || !/^\d{4}$/.test(card4)) {
+    error.style.display = "block";
+    return;
+  }
+
+  const custId = "VISA" + Math.floor(100000 + Math.random() * 900000);
+
+  sessionStorage.setItem("name", name);
+  sessionStorage.setItem("profession", profession);
+  sessionStorage.setItem("custId", custId);
+  sessionStorage.setItem("card4", card4);
+  sessionStorage.setItem("lang", document.getElementById("lang").value);
+
+  window.location.href = "visa_dashboard_v2.html";
+}
+</script>
+
+</body>
+</html>
