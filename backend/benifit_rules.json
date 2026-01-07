@@ -1,0 +1,24 @@
+{
+  "travel": {
+    "eligible_cards": ["Visa Platinum", "Visa Signature"],
+    "benefits": [
+      "Complimentary airport lounge access",
+      "International travel insurance coverage",
+      "Flight booking cashback offers"
+    ]
+  },
+  "dining": {
+    "eligible_cards": ["Visa Gold", "Visa Signature"],
+    "benefits": [
+      "Dining discounts at partner restaurants",
+      "Restaurant cashback offers"
+    ]
+  },
+  "shopping": {
+    "eligible_cards": ["Visa Platinum", "Visa Gold"],
+    "benefits": [
+      "Online shopping cashback",
+      "Extended warranty on purchases"
+    ]
+  }
+}
